@@ -2,6 +2,8 @@
 #make sure to install the tidyverse if it's not already installed
 library(tidyverse)
 library(lubridate)
+install.packages("dplyr")
+library(dplyr)
 
 # run this line below load the data for this assignment
 # we'll use a built-in dataset from the ggplot2 package (loaded as party of the tidyverse)
@@ -50,14 +52,18 @@ sample4houses=filter(housesales, city == "Houston",
 # and the year is 2010. Now add a sort using arrange() to sort the results based on the number
 # of home sales (the "sales" column) from most to least.
 
-
-
+sample5houses=filter(housesales, city == "Houston",
+                     year == "2010")
+sample5houses=sample5houses %>% 
+  arrange(desc(sales))
 
 
 # 6) Piggyback on what you've done above. 
 # Do the same as #5, only this time instead of Houston return records for Dallas
-
-
+sample6houses=filter(housesales, city == "Dallas",
+                     year == "2010")
+sample6houses=sample6houses %>%
+  arrange(desc(sales))
 
 
 
