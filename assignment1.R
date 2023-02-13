@@ -25,9 +25,11 @@ View(housesales)
 
 # 1) The column "year" indicates the year. Filter to return only results from 2015. 
 # (note that because the column is numeric, you wouldn't use quotes as with text when setting your filter value)
+# Here, I created the new data table "sample1houses" to show all 322 housesales during 2015.
 sample1houses=filter(housesales, year == "2015")
 
 # 2) Similar to the above question, filter results from 2010 onward, so 2010-2015.
+# Here, I filtered all house sales after 2009 to develop the data table "sample2houses". There were 3,082 home sales after 2009.
 sample2houses=filter(housesales, year>2009)
 
 
@@ -35,6 +37,7 @@ sample2houses=filter(housesales, year>2009)
 
 # 3) The "city" column contains the relevant city. Filter to return only results for Houston
 # (note, remember R is case sensitive)
+# Here, I filtered out all house sales in Houston, resulting in 187 matches in the data table "Sample3houses".
 sample3houses=filter(housesales, city == "Houston")
 
 
@@ -42,6 +45,7 @@ sample3houses=filter(housesales, city == "Houston")
 
 # 4) Filter for only where the city is Houston as above, and now also filter for only 
 # the year 2010. The results should give you 12 records, one for each month in 2010 for Houston.
+# In data table "sample4houses", I filtered all results to get 12 matches that were in Houston during 2010.
 sample4houses=filter(housesales, city == "Houston",
                      year == "2010")
 
@@ -51,6 +55,7 @@ sample4houses=filter(housesales, city == "Houston",
 # 5) Build on what you've done above. Filter for only where the city is Houston as above, 
 # and the year is 2010. Now add a sort using arrange() to sort the results based on the number
 # of home sales (the "sales" column) from most to least.
+# I first created the data table that obtained the same results as "sample4houses". I then sorted this new data table using a pipe to put each month of the year in order by sales.
 
 sample5houses=filter(housesales, city == "Houston",
                      year == "2010")
@@ -60,6 +65,7 @@ sample5houses=sample5houses %>%
 
 # 6) Piggyback on what you've done above. 
 # Do the same as #5, only this time instead of Houston return records for Dallas
+# I copied the same formula from question 5, and changed the city to "Dallas" and created sample table 6.
 sample6houses=filter(housesales, city == "Dallas",
                      year == "2010")
 sample6houses=sample6houses %>%
@@ -75,21 +81,29 @@ sample6houses=sample6houses %>%
 # Let's do that here: we're going to look only for sales that happened in the month of JUNE.
 #
 # Filter for the city is Dallas, and the month is June (the number 6). 
-
+# Here, I formed data table "sample7houses" by filtering for the June sales in Dallas each year.
+sample7houses=filter(housesales, city == "Dallas", 
+                     month == "6")
 
 
 
 
 # 8) Build on what we've done above. Now that we have June numbers for Dallas for every year,
 # arrange the results by sales from highest-to-lowest to show what year had the highest June sales.
-
+# Here, I sorted the data obtained in sample7houses to show june sales in Dallas in descending order.
+sample8houses=sample7houses %>%
+  arrange(desc(sales))
 
 
 
 
 
 # 9) Now do the same as Question 8, but this time instead of Dallas, show results for Corpus Christi
-
+# Here, I copied the same formula from the last two questions, and changed the city to Corpus Christi.
+sample9houses=filter(housesales, city == "Corpus Christi",
+                     month == "6")
+sample9houses=sample9houses %>%
+  arrange(desc(sales))
 
 
 
@@ -97,4 +111,8 @@ sample6houses=sample6houses %>%
 
 # 10) Finally, using the Corpus Christi code from Question 9, instead of June
 # use the month of February (2) instead.
-
+# Here, I copied the same formula as the last question and changed the month to February.
+sample10houses=filter(housesales, city == "Corpus Christi",
+                     month == "2")
+sample10houses=sample10houses %>%
+  arrange(desc(sales))
